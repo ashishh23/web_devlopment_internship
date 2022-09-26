@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+
+    <title>TO_DO_LIST</title>
+  </head>
+  <body>
+    <h3 style="font-size: 60px" id="ak">My TO DO LIST</h3>
+    <h5 style="align-content: center; text-align: center; color: #ebf2f4 ;font-size: 20px">
+      Design by ashish kothwal
+    </h5>
+    <div class="container">
+      <div id="newtask">
+        <input type="text" placeholder="Add Tasks" />
+        <button id="push">Add</button>
+      </div>
+      <div id="tasks"></div>
+    </div>
+    <script>
+      document.querySelector("#push").onclick = function () {
+        if (document.querySelector("#newtask input").value.length == 0) {
+          alert("Kindly Enter Task Name!!!!");
+        } else {
+          document.querySelector("#tasks").innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector("#newtask input").value}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+
+          var current_tasks = document.querySelectorAll(".delete");
+          for (var i = 0; i < current_tasks.length; i++) {
+            current_tasks[i].onclick = function () {
+              this.parentNode.remove();
+            };
+          }
+        }
+      };
+    </script>
+  </body>
+</html>
